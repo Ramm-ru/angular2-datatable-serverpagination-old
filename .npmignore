@@ -1,0 +1,17 @@
+/coverage/
+/examples/
+/.git/
+/.idea/
+/node_modules/
+/src/typings/
+
+.codeclimate.yml
+devrelease.sh
+.eslintignore
+.eslintrc
+.gitignore
+karma.conf.js
+karma-test-shim.js
+.npmignore
+release.sh
+.travis.yml

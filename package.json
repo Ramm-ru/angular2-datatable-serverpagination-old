@@ -1,0 +1,69 @@
+{
+  "name": "angular2-datatable-serverpagination-old",
+  "version": "0.1.1",
+  "description": "DataTableServerPagination component for Angular2 framework (v 2.0.0-rc.0)",
+  "main": "datatable",
+  "scripts": {
+    "postinstall": "cd src && typings install",
+    "watch": "tsc -p src -w",
+    "prebuild": "rm -rf lib",
+    "build": "tsc -p src",
+    "start": "http-server -c-1 -o -p 8875 .",
+    "pretest": "npm run build",
+    "test": "karma start karma.conf.js",
+    "posttest": "node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage -t html",
+    "coverage-remap": "remap-istanbul -i coverage/coverage-final.json -o coverage/coverage-remapped.lcov -t lcovonly",
+    "coverage": "http-server -c-1 -o -p 9875 ./coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VojtenkoRN/angular2-datatable-serverpagination-old.git"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "angular2",
+    "ng",
+    "ng2",
+    "table",
+    "pagination",
+    "server",
+    "serverpagination",
+    "2.0.0-rc.0",
+    "sort",
+    "sorting"
+  ],
+  "author": "vojtenko.rn@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VojtenkoRN/angular2-datatable-serverpagination-old/issues"
+  },
+  "homepage": "https://github.com/VojtenkoRN/angular2-datatable-serverpagination-old#readme",
+  "devDependencies": {
+    "@angular/core": "^2.0.0-rc.0",
+    "@angular/platform-browser": "^2.0.0-rc.0",
+    "es6-shim": "^0.35.0",
+    "http-server": "^0.9.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^0.5.5",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "lodash": "^4.0.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "reflect-metadata": "^0.1.3",
+    "remap-istanbul": "^0.6.3",
+    "rxjs": "^5.0.0-beta.6",
+    "systemjs": "^0.19.27",
+    "traceur": "0.0.108",
+    "typescript": "^1.8.10",
+    "typings": "^0.8.1",
+    "zone.js": "^0.6.12"
+  },
+  "peerDependencies": {
+    "@angular/core": "^2.0.0-rc.0",
+    "lodash": "^4.0.0",
+    "rxjs": "^5.0.0-beta.6"
+  }
+}
