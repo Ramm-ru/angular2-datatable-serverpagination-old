@@ -8,17 +8,10 @@
     "removeComments": true,
     "sourceMap": true,
     "outDir": "../lib",
-    "declaration": true,
-    "typeRoots": [
-      "../node_modules/@types"
-    ],
-    "lib": [
-      "dom",
-      "es2015"
-    ]
+    "declaration": true
   },
-  "angularCompilerOptions": {
-    "genDir": "../aot",
-    "skipMetadataEmit": false
-  }
+  "exclude": [
+    "typings/main.d.ts",
+    "typings/main"
+  ]
 }

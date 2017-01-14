@@ -1,5 +1,11 @@
 #Changelog
 
+## 1.1.0 (2017-01-14)
+
+Changes:
+    
+    - bugfix
+
 ## 1.0.0 (2017-01-14)
 
 Changes:

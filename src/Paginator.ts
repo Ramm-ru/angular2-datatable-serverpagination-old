@@ -7,7 +7,7 @@ import {DataTable, PageEvent} from "./DataTable";
 })
 export class Paginator implements OnChanges {
 
-    @Input("mfTable") inputMfTable: DataTable;
+    @Input("mfTable") private inputMfTable: DataTable;
 
     private mfTable: DataTable;
 

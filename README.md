@@ -14,7 +14,7 @@ app.ts
      private data: any[] = ...
      
      public onPageChange(event) {
-                 this.loadFromServer(event.activePage, event.rowsOnPage);
+        this.loadFromServer(event.activePage, event.rowsOnPage);
      }
          
  }
@@ -66,23 +66,19 @@ app.html
  - selector: `table[mfData]`
  - exportAs: `mfDataTable`
  - inputs
-   - `mfData: any[]` - array of data to display in table
+   - `mfData: any[]` - array of data to display on table
    - `mfRowsOnPage: number` - number of rows should be displayed on page (default: 1000)
-   - `mfActivePage: number` - page number (default: 1)
-   - `mfSortBy: any` - sort by parameter
-   - `mfSortOrder: string` - sort order parameter, "asc" or "desc"
+   - `mfActivePage: number` - page number should be displayed on init (default: 1)
    - `mfAmountOfRows: number` - total amount of rows
  - outputs
-   - `mfSortByChange: any` - sort by parameter
-   - `mfSortOrderChange: any` - sort order parameter
    - `mfOnPageChange: any` - event of page changing or amount of rows on a page. You should write a function, what would reload data from server and use it here
-
+ 
 ### `mfDefaultSorter` component
 
  - selector: `mfDefaultSorter`
  - inputs
    - `by: any` - specify how to sort data (argument for lodash function [_.sortBy ](https://lodash.com/docs#sortBy))
-
+ 
 ### `mfBootstrapPaginator` component
 Displays buttons for changing current page and number of displayed rows using bootstrap template (css for bootstrap is required). If array length is smaller than current displayed rows on page then it doesn't show button for changing page. If array length is smaller than min value rowsOnPage then it doesn't show any buttons.
 

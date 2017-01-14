@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {DataTable, SortEvent} from "./DataTable";
 
 @Component({
@@ -10,29 +10,25 @@ import {DataTable, SortEvent} from "./DataTable";
             <span *ngIf="isSortedByMeDesc" class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
         </a>`
 })
-export class DefaultSorter implements OnInit {
+export class DefaultSorter {
 
     @Input("by") sortBy: string;
 
-    isSortedByMeAsc: boolean = false;
-    isSortedByMeDesc: boolean = false;
+    private isSortedByMeAsc: boolean = false;
+    private isSortedByMeDesc: boolean = false;
 
     public constructor(private mfTable: DataTable) {
+        mfTable.onSortChange.subscribe((event: SortEvent) => {
+            this.isSortedByMeAsc = (event.sortBy === this.sortBy && event.sortOrder === "asc");
+            this.isSortedByMeDesc = (event.sortBy === this.sortBy && event.sortOrder === "desc");
+        })
     }
 
-    public ngOnInit(): void {
-        this.mfTable.onSortChange.subscribe((event: SortEvent) => {
-            this.isSortedByMeAsc = (event.sortBy == this.sortBy && event.sortOrder == "asc");
-            this.isSortedByMeDesc = (event.sortBy == this.sortBy && event.sortOrder == "desc");
-        });
-    }
-
-    sort() {
+    private sort() {
         if (this.isSortedByMeAsc) {
             this.mfTable.setSort(this.sortBy, "desc");
         } else {
             this.mfTable.setSort(this.sortBy, "asc");
         }
     }
-
 }
