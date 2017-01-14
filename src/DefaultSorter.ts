@@ -12,7 +12,7 @@ import {DataTable, SortEvent} from "./DataTable";
 })
 export class DefaultSorter {
 
-    @Input("by") sortBy: string;
+    @Input("by") private sortBy: string;
 
     private isSortedByMeAsc: boolean = false;
     private isSortedByMeDesc: boolean = false;
@@ -31,4 +31,5 @@ export class DefaultSorter {
             this.mfTable.setSort(this.sortBy, "asc");
         }
     }
+
 }
