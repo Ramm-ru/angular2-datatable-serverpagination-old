@@ -5,15 +5,15 @@ import {
     SimpleChange,
     OnChanges,
     DoCheck,
-    Output,
     IterableDiffers,
-    IterableDiffer
+    IterableDiffer,
+    Output
 } from "@angular/core";
 import * as _ from "lodash";
-import {ReplaySubject} from "rxjs";
+import {ReplaySubject} from "rxjs/Rx";
 
 export interface SortEvent {
-    sortBy: string;
+    sortBy: string|string[];
     sortOrder: string
 }
 
