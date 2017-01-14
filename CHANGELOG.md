@@ -1,5 +1,11 @@
 #Changelog
 
+## 1.0.0 (2017-01-14)
+
+Changes:
+    
+    - change to server pagination
+
 ## 0.4.2 (2016-05-11)
 
 Breaking changes:
