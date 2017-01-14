@@ -12,6 +12,11 @@ app.ts
  })
  export class App {
      private data: any[] = ...
+     
+     public onPageChange(event) {
+                 this.loadFromServer(event.activePage, event.rowsOnPage);
+     }
+         
  }
 ```
 
