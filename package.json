@@ -1,6 +1,6 @@
 {
   "name": "angular2-datatable-serverpagination-old",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "DataTableServerPagination component for Angular2 framework (v 2.0.0-rc.4)",
   "main": "datatable",
   "scripts": {
@@ -50,7 +50,7 @@
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
-    "lodash": "^4.0.0",
+    "lodash": "^4.15.0",
     "phantomjs-prebuilt": "^2.1.7",
     "reflect-metadata": "^0.1.3",
     "remap-istanbul": "^0.6.3",
@@ -59,7 +59,7 @@
     "traceur": "0.0.108",
     "typescript": "^1.8.10",
     "typings": "^0.8.1",
-    "zone.js": "^0.6.12"
+    "zone.js": "^0.6.11"
   },
   "peerDependencies": {
     "@angular/core": "^2.0.0-rc.4",
