@@ -1,12 +1,11 @@
-import {Component, Input, OnChanges, Optional} from "@angular/core";
+import {Component, Input, OnChanges, SimpleChange, Optional} from "@angular/core";
 import {DataTable, PageEvent} from "./DataTable";
 import * as _ from "lodash";
-
 
 @Component({
     selector: "mfBootstrapPaginator",
     template: `
-    <div>
+    <div (change)="OnChangesInside($event)">
         <nav class="pagination" *ngIf="dataLength > rowsOnPage">
             <li [class.disabled]="activePage <= 1" (click)="setPage(1)">
                 <a style="cursor: pointer">&laquo;</a>
@@ -52,16 +51,15 @@ import * as _ from "lodash";
 })
 export class BootstrapPaginator implements OnChanges {
 
-    @Input("mfTable") private inputMfTable: DataTable;
     @Input("rowsOnPageSet") private rowsOnPageSet = [];
     @Input("mfTable") private mfTable: DataTable;
-
-    private minRowsOnPage = 0;
+    @Input("mfTable") private inputMfTable: DataTable;
 
     public activePage: number;
     public rowsOnPage: number;
     public dataLength: number = 0;
     public lastPage: number;
+    private minRowsOnPage = 0;
 
     public constructor(@Optional() private injectMfTable: DataTable) {
     }
@@ -70,6 +68,9 @@ export class BootstrapPaginator implements OnChanges {
         if (changes.rowsOnPageSet) {
             this.minRowsOnPage = _.min(this.rowsOnPageSet)
         }
+    }
+
+    public OnChangesInside(changes: {[key: string]: SimpleChange}): any {
         this.mfTable = this.inputMfTable || this.injectMfTable;
         this.onPageChangeSubscriber(this.mfTable.getPage());
         this.mfTable.onPageChange.subscribe(this.onPageChangeSubscriber);
