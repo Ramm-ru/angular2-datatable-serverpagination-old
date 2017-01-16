@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, Optional} from "@angular/core";
+import {Component, Input, OnChanges} from "@angular/core";
 import {DataTable, PageEvent} from "./DataTable";
 import * as _ from "lodash";
 
@@ -50,9 +50,7 @@ import * as _ from "lodash";
 export class BootstrapPaginator implements OnChanges {
 
     @Input("rowsOnPageSet") private rowsOnPageSet = [];
-    @Input("mfTable") private inputMfTable: DataTable;
-
-    private mfTable: DataTable;
+    @Input("mfTable") private mfTable: DataTable;
 
     public activePage: number;
     public rowsOnPage: number;
@@ -60,11 +58,7 @@ export class BootstrapPaginator implements OnChanges {
     public lastPage: number;
     private minRowsOnPage = 0;
 
-    public constructor(@Optional() private injectMfTable: DataTable) {
-    }
-
     ngOnChanges(changes: any): any {
-        this.mfTable = this.inputMfTable || this.injectMfTable;
         this.onPageChangeSubscriber(this.mfTable.getPage());
         this.mfTable.onPageChange.subscribe(this.onPageChangeSubscriber);
         if (changes.rowsOnPageSet) {
