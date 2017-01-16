@@ -50,8 +50,9 @@ import * as _ from "lodash";
 export class BootstrapPaginator implements OnChanges {
 
     @Input("rowsOnPageSet") private rowsOnPageSet = [];
-    @Input("mfTable") private mfTable: DataTable;
     @Input("mfTable") private inputMfTable: DataTable;
+
+    private mfTable: DataTable;
 
     public activePage: number;
     public rowsOnPage: number;
