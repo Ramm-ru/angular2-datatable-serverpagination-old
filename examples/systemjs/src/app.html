@@ -14,8 +14,8 @@
             <div class="panel-heading">User information</div>
 
             <table class="table table-striped" [mfData]="data" #mf="mfDataTable"
-                   [mfAmountOfRows]="amount" [mfRowsOnPage]="10"
-                   (onPageChange)="onPageChange($event)">
+                   [mfAmountOfRows]="amount" [mfRowsOnPage]="rowsOnPage"
+                   (mfOnPageChange)="onPageChange($event)">
                 <thead>
                 <tr>
                     <th style="width: 20%">

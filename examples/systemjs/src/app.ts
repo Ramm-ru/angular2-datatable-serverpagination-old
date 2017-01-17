@@ -13,29 +13,31 @@ import {DataTableDirectives} from "angular2-datatable-serverpagination-old/datat
 })
 export class App {
 
+    private pseudoServer = [];
     private data = [];
     private amount: number = 0;
+    private rowsOnPage: number = 5;
 
     constructor(private http: Http) {
         http.get("/src/data.json")
             .subscribe((data) => {
                 setTimeout(() => {
-                    this.data = data.json();
-                    this.amount = this.data.length;
+                    this.pseudoServer = data.json();
+                    this.load(1);
                 }, 5000);
             });
     }
 
     public onPageChange(event) {
-        console.log(event.activePage + ", " + event.rowsOnPage + ", " + event.dataLength);
+        this.rowsOnPage = event.rowsOnPage;
+        this.load(event.activePage);
     }
 
-    private toInt(num: string) {
-        return +num;
-    }
-
-    private sortByWordLength = (a: any) => {
-        return a.name.length;
+    public load(page: number) {
+        this.data = [];
+        this.amount = this.pseudoServer.length;
+        let start = page * this.rowsOnPage;
+        this.data = this.pseudoServer.slice(start, start + this.rowsOnPage);
     }
 
 }
