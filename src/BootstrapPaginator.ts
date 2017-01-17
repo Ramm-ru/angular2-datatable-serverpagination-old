@@ -1,84 +1,67 @@
 import {Component, Input, OnChanges} from "@angular/core";
-import {DataTable, PageEvent} from "./DataTable";
+import {DataTable} from "./DataTable";
+import {Paginator} from "./Paginator";
 import * as _ from "lodash";
 
 @Component({
     selector: "mfBootstrapPaginator",
     template: `
-        <nav class="pagination" *ngIf="dataLength > rowsOnPage">
-            <li [class.disabled]="activePage <= 1" (click)="setPage(1)">
+    <mfPaginator #p [mfTable]="mfTable">
+        <nav class="pagination" *ngIf="p.dataLength > p.rowsOnPage">
+            <li [class.disabled]="p.activePage <= 1" (click)="p.setPage(1)">
                 <a style="cursor: pointer">&laquo;</a>
             </li>
-            <li *ngIf="activePage > 4 && activePage + 1 > lastPage" (click)="setPage(activePage - 4)">
-                <a style="cursor: pointer">{{activePage-4}}</a>
+            <li *ngIf="p.activePage > 4 && p.activePage + 1 > p.lastPage" (click)="p.setPage(p.activePage - 4)">
+                <a style="cursor: pointer">{{p.activePage - 4}}</a>
             </li>
-            <li *ngIf="activePage > 3 && activePage + 2 > lastPage" (click)="setPage(activePage - 3)">
-                <a style="cursor: pointer">{{activePage-3}}</a>
+            <li *ngIf="p.activePage > 3 && p.activePage + 2 > p.lastPage" (click)="p.setPage(p.activePage - 3)">
+                <a style="cursor: pointer">{{p.activePage - 3}}</a>
             </li>
-            <li *ngIf="activePage > 2" (click)="setPage(activePage - 2)">
-                <a style="cursor: pointer">{{activePage-2}}</a>
+            <li *ngIf="p.activePage > 2" (click)="p.setPage(p.activePage - 2)">
+                <a style="cursor: pointer">{{p.activePage - 2}}</a>
             </li>
-            <li *ngIf="activePage > 1" (click)="setPage(activePage - 1)">
-                <a style="cursor: pointer">{{activePage-1}}</a>
+            <li *ngIf="p.activePage > 1" (click)="p.setPage(p.activePage - 1)">
+                <a style="cursor: pointer">{{p.activePage - 1}}</a>
             </li>
             <li class="active">
-                <a style="cursor: pointer">{{activePage}}</a>
+                <a style="cursor: pointer">{{p.activePage}}</a>
             </li>
-            <li *ngIf="activePage + 1 <= lastPage" (click)="setPage(activePage + 1)">
-                <a style="cursor: pointer">{{activePage+1}}</a>
+            <li *ngIf="p.activePage + 1 <= p.lastPage" (click)="p.setPage(p.activePage + 1)">
+                <a style="cursor: pointer">{{p.activePage + 1}}</a>
             </li>
-            <li *ngIf="activePage + 2 <= lastPage" (click)="setPage(activePage + 2)">
-                <a style="cursor: pointer">{{activePage+2}}</a>
+            <li *ngIf="p.activePage + 2 <= p.lastPage" (click)="p.setPage(p.activePage + 2)">
+                <a style="cursor: pointer">{{p.activePage + 2}}</a>
             </li>
-            <li *ngIf="activePage + 3 <= lastPage && activePage < 3" (click)="setPage(activePage + 3)">
-                <a style="cursor: pointer">{{activePage+3}}</a>
+            <li *ngIf="p.activePage + 3 <= p.lastPage && p.activePage < 3" (click)="p.setPage(p.activePage + 3)">
+                <a style="cursor: pointer">{{p.activePage + 3}}</a>
             </li>
-            <li *ngIf="activePage + 4 <= lastPage && activePage < 2" (click)="setPage(activePage + 4)">
-                <a style="cursor: pointer">{{activePage+4}}</a>
+            <li *ngIf="p.activePage + 4 <= p.lastPage && p.activePage < 2" (click)="p.setPage(p.activePage + 4)">
+                <a style="cursor: pointer">{{p.activePage + 4}}</a>
             </li>
-            <li [class.disabled]="activePage >= lastPage" (click)="setPage(lastPage)">
+            <li [class.disabled]="p.activePage >= p.lastPage" (click)="p.setPage(p.lastPage)">
                 <a style="cursor: pointer">&raquo;</a>
             </li>
         </nav>
-        <nav class="pagination pull-right" *ngIf="dataLength > minRowsOnPage">
-            <li *ngFor="let rows of rowsOnPageSet" [class.active]="rowsOnPage===rows" (click)="setRowsOnPage(rows)">
+        <nav class="pagination pull-right" *ngIf="p.dataLength > minRowsOnPage">
+            <li *ngFor="let rows of rowsOnPageSet" [class.active]="p.rowsOnPage === rows" (click)="p.setRowsOnPage(rows)">
                 <a style="cursor: pointer">{{rows}}</a>
             </li>
         </nav>
-    `
+    </mfPaginator>
+    `,
+    directives: [Paginator]
 })
 export class BootstrapPaginator implements OnChanges {
 
     @Input("rowsOnPageSet") private rowsOnPageSet = [];
     @Input("mfTable") private mfTable: DataTable;
 
-    public activePage: number;
-    public rowsOnPage: number;
-    public dataLength: number = 0;
-    public lastPage: number;
     private minRowsOnPage = 0;
 
     ngOnChanges(changes: any): any {
-        this.onPageChangeSubscriber(this.mfTable.getPage());
-        this.mfTable.onPageChange.subscribe(this.onPageChangeSubscriber);
         if (changes.rowsOnPageSet) {
             this.minRowsOnPage = _.min(this.rowsOnPageSet)
         }
     }
-
-    public setPage(pageNumber: number): void {
-        this.mfTable.setPage(pageNumber, this.rowsOnPage);
-    }
-
-    public setRowsOnPage(rowsOnPage: number): void {
-        this.mfTable.setPage(this.activePage, rowsOnPage);
-    }
-
-    private onPageChangeSubscriber = (event: PageEvent) => {
-        this.activePage = event.activePage;
-        this.rowsOnPage = event.rowsOnPage;
-        this.dataLength = event.dataLength;
-        this.lastPage = Math.ceil(this.dataLength / this.rowsOnPage);
-    };
 
 }

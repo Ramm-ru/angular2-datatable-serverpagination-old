@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "scripts": {
     "postinstall": "tsd install",
@@ -19,13 +19,13 @@
     "tsd": "^0.6.5"
   },
   "dependencies": {
-    "@angular/common": "^2.0.0-rc.4",
-    "@angular/compiler": "^2.0.0-rc.4",
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
     "@angular/core": "2.0.0-rc.4",
     "@angular/http": "2.0.0-rc.4",
-    "@angular/platform-browser": "^2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "^2.0.0-rc.4",
-    "angular2-datatable-serverpagination-old": "1.1.6",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "angular2-datatable-serverpagination-old": "1.2.0",
     "bootstrap": "^3.3.6",
     "es6-shim": "^0.35.0",
     "lodash": "^4.0.0",
