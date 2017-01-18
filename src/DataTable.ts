@@ -53,7 +53,7 @@ export class DataTable implements OnChanges, DoCheck {
     }
 
     public getPage(): PageEvent {
-        return {activePage: this.activePage, rowsOnPage: this.rowsOnPage, dataLength: this.inputData.length};
+        return {activePage: this.activePage, rowsOnPage: this.rowsOnPage, dataLength: this.amountOfRows};
     }
 
     public setPage(activePage: number, rowsOnPage: number): void {
