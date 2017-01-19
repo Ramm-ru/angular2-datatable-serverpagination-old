@@ -36,7 +36,7 @@ export class App {
     public load(page: number) {
         this.data = [];
         this.amount = this.pseudoServer.length;
-        let start = page * this.rowsOnPage;
+        let start = (page - 1) * this.rowsOnPage;
         this.data = this.pseudoServer.slice(start, start + this.rowsOnPage);
     }
 
