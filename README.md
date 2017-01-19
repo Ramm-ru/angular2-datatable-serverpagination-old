@@ -11,10 +11,15 @@ app.ts
      directives: [DataTableDirectives]
  })
  export class App {
+     
      private data: any[] = ...
+     private amountOfRows: number = 0;
      
      public onPageChange(event) {
-        this.loadFromServer(event.activePage, event.rowsOnPage);
+        let activePage = event.activePage;
+        let rowsOnPage = event.rowsOnPage;
+        ... //load data from server using activeOage and rowsOnPage
+        this.amountOfRows = amountOfRowsFromServer;
      }
          
  }
