@@ -1,6 +1,6 @@
 {
   "name": "angular2-datatable-serverpagination-old",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "DataTableServerPagination component for Angular2 framework (v 2.0.0-rc.4) (fork of mariuszfoltak angular2-datatable)",
   "main": "datatable",
   "scripts": {

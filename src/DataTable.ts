@@ -79,7 +79,7 @@ export class DataTable implements OnChanges, DoCheck {
         if (changes["inputData"]) {
             this.inputData = this.inputData || [];
             this.onDataChange.emit({
-                length: this.inputData.length
+                length: this.amountOfRows
             });
             this.mustRecalculateData = true;
         }
